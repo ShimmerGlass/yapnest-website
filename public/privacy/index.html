@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy policy - Yapnest</title>
+  <meta name="description" content="How the Yapnest app handles your data: what stays on your device, what goes to your XMPP server, and what goes to the services it can use.">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="/"><img src="/icon.svg" alt="" width="32" height="32">Yapnest</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/privacy" aria-current="page">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/support">Support</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Privacy policy</h1>
+    <p class="updated">Last updated: 2026-10-10</p>
+
+    <p class="note"><strong>Who is responsible:</strong> Mathilde Gilles, a private individual in France (see the <a href="/legal">legal notice</a>). Contact: <a href="mailto:support@yapnest.fr">support@yapnest.fr</a>.</p>
+
+    <p>Yapnest is a chat app. It is a client for XMPP, an open messaging standard. Yapnest has no analytics, no tracking and no ads. Your messages do not go through us.</p>
+
+    <h2>The short version</h2>
+    <ul>
+      <li>Your account, contacts and messages are on the XMPP server you sign in to, not on a server of ours.</li>
+      <li>The app keeps a copy on your device.</li>
+      <li>Messages in one-to-one chats are end-to-end encrypted with OMEMO, unless you turn it off.</li>
+      <li>Push notifications go through a small relay we run. It handles your device token and your account address, and nothing about your messages.</li>
+      <li>GIF search and link previews contact other services. You can turn both off.</li>
+    </ul>
+
+    <h2>Your XMPP server</h2>
+    <p>When you sign in, the app connects to the server of your account. That server is run by someone else. It stores your account, your contact list, your messages (possibly as an archive) and the files you upload. It also sees who you talk to and when.</p>
+    <p>The server&rsquo;s operator is responsible for that data. Read their privacy policy. Yapnest cannot see or change what your server does.</p>
+
+    <h2>On your device</h2>
+    <ul>
+      <li>The app keeps a database for each account: messages, contacts, settings, and your OMEMO encryption keys.</li>
+      <li>Your password and sign-in details are kept in the Keychain.</li>
+      <li>Files you send or receive are kept on the device.</li>
+      <li>The app&rsquo;s notification and share extensions use the same storage, so they can show and send messages.</li>
+      <li>Signing out deletes the messages and keys stored on the device for that account. Messages on your server stay there.</li>
+    </ul>
+
+    <h2>Encryption</h2>
+    <p>Yapnest uses OMEMO. With OMEMO, only you and the devices of the people in the chat can read a message. Your server cannot.</p>
+    <ul>
+      <li>It is on by default in one-to-one chats. You can turn it off for a chat.</li>
+      <li>In group chats it is on only in private rooms, where only members can join and each member&rsquo;s address is visible. Other rooms are not encrypted.</li>
+      <li>OMEMO does not hide who talks to whom, when, or how much. Your server sees that.</li>
+    </ul>
+
+    <h2>Uploaded files</h2>
+    <p>Files go to the upload service of your XMPP server. They are encrypted first when OMEMO is on for the chat. If it is off, the upload service can read them. Your server decides how long files are kept.</p>
+
+    <h2>Push notifications</h2>
+    <p>To tell you about a new message when the app is closed, the app uses Apple&rsquo;s push service (APNs) through a relay we run, at <code>push.yapnest.fr</code>.</p>
+    <ul>
+      <li>The app sends the relay your device&rsquo;s push token and whether it is a test or a production build. The request also carries your account address.</li>
+      <li>The relay answers with an opaque code. The app gives that code, not the token, to your XMPP server. Your server never sees the token.</li>
+      <li>When your server has a new message for you, it tells the relay. The relay asks Apple to wake the app. The alert has no content: not the sender, not the text. The app then fetches and decrypts the message itself and shows the notification.</li>
+      <li>The relay has no database. The code carries the token and your address, sealed with a key that only the relay has.</li>
+      <li>The relay&rsquo;s log records only that a device registered or a push was sent, and errors. It never records your account address or your device.</li>
+      <li>Apple receives the push token and the empty alert, under Apple&rsquo;s own privacy policy.</li>
+    </ul>
+
+    <h2>Link previews</h2>
+    <p>A link preview shows a title and image for a link. The app loads the linked page from your device, so the site sees your IP address and that the link was opened. Nothing goes through us.</p>
+    <ul>
+      <li>For links you send, previews are on unless you turn them off for the chat.</li>
+      <li>For links you receive, the app asks you per chat first.</li>
+      <li>In Settings you can turn link previews off for everything.</li>
+    </ul>
+
+    <h2>GIFs</h2>
+    <p>The GIF picker uses KLIPY. When you open it or search, the app sends KLIPY your search words, your language and the page it wants, then loads the pictures from KLIPY. KLIPY sees your IP address. The app uses no cookies and no cache for this, and sends no user ID. A GIF you pick is downloaded and sent as an ordinary file in your chat.</p>
+    <p>KLIPY&rsquo;s own privacy policy covers what it does with this. In Settings you can turn the GIF picker off.</p>
+
+    <h2>Location, camera, microphone, photos</h2>
+    <ul>
+      <li><strong>Location:</strong> only when you choose to share it in a chat. The app reads your position then and sends it as a message to that chat. It is not collected otherwise. Maps are drawn by Apple Maps.</li>
+      <li><strong>Camera and microphone:</strong> only when you take a photo or video to send. The microphone records the sound of a video.</li>
+      <li><strong>Photos:</strong> the app saves a photo or video to your library only when you ask it to.</li>
+    </ul>
+    <p>You can turn each permission off in your device&rsquo;s settings.</p>
+
+    <h2>What we do not do</h2>
+    <ul>
+      <li>No analytics, no crash reporting and no advertising code in the app. It uses open-source libraries for XMPP, OMEMO and its local database.</li>
+      <li>No tracking, and no sale of data.</li>
+      <li>We do not read your messages.</li>
+    </ul>
+
+    <h2>Why we use this data, and the legal basis</h2>
+    <p>Under the GDPR, we handle the little data we get (push token and account address) because it is needed to give you the notifications you ask for. That is the performance of a contract with you (Article 6(1)(b)). Keeping the relay safe and working is our legitimate interest (Article 6(1)(f)). For features that need a permission or an outside service, such as location, camera, GIFs or link previews, you start the feature yourself, and that is your consent (Article 6(1)(a)).</p>
+
+    <h2>How long we keep it</h2>
+    <ul>
+      <li>The relay stores no records, and its logs name no one.</li>
+      <li>Data on your device stays until you sign out or delete the app.</li>
+      <li>Data on your XMPP server, and at KLIPY, Apple and the sites you link to, is kept as they decide.</li>
+    </ul>
+
+    <h2>Your rights</h2>
+    <p>If you are in the European Economic Area, you can ask us for access to your data, to correct it, to delete it, to limit or object to its use, and to receive it in a portable form. You can withdraw consent at any time. To use a right, write to <a href="mailto:support@yapnest.fr">support@yapnest.fr</a>. We answer within one month.</p>
+    <p>For data on your XMPP server, ask its operator.</p>
+    <p>You can also complain to the French data protection authority, the CNIL: <a href="https://www.cnil.fr/en/plaintes">cnil.fr/en/plaintes</a>.</p>
+
+    <h2>International transfers</h2>
+    <p>Your XMPP server, KLIPY and Apple may be outside the European Economic Area. Their policies say how they protect data.</p>
+
+    <h2>Changes</h2>
+    <p>If we change this policy, we post the new version here with a new date.</p>
+
+    <h2>Contact</h2>
+    <p><a href="mailto:support@yapnest.fr">support@yapnest.fr</a></p>
+  </main>
+  <footer>
+    <ul>
+      <li><a href="/privacy">Privacy policy</a></li>
+      <li><a href="/terms">Terms of use</a></li>
+      <li><a href="/support">Support</a></li>
+      <li><a href="/legal">Legal notice</a></li>
+      <li><a href="mailto:support@yapnest.fr">support@yapnest.fr</a></li>
+    </ul>
+    <p>Yapnest is an XMPP client for iPhone and Mac.</p>
+  </footer>
+</body>
+</html>

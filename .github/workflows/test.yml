@@ -1,0 +1,24 @@
+# On every push and pull request: validate the HTML, check the links, test the nginx config and query a running nginx,
+# by building the Dockerfile's `test` stage. The checks run in the build, so CI checks the very nginx a release ships
+# and the runner needs nothing but Docker.
+name: test
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: html, links, nginx
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          target: test
+          platforms: linux/amd64
+          push: false
