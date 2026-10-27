@@ -93,9 +93,9 @@
       <li>The relay answers with an opaque code. The app gives that code, not the token, to your XMPP server. Your server never sees the token.</li>
       <li>When your server has a new message for you, it tells the relay. The relay asks Apple to wake the app. The server&rsquo;s push names your account, so the relay sees that your account got a push, and when. Some servers add the sender and the text. The relay throws them away and never sends them to Apple. The alert has no content: not the sender, not the text. The app then fetches and decrypts the message itself and shows the notification.</li>
       <li>The relay stores nothing on disk. The code carries the token and your address, sealed with a key that only the relay has. The relay remembers a device for ten seconds, to avoid sending a push twice.</li>
-      <li>The relay&rsquo;s log records only that a device registered or a push was sent, and errors. It never records your account address or your device.</li>
+      <li>The relay&rsquo;s log records only its own connection state and errors. It never records your account address, your device or your IP address.</li>
       <li>The relay runs at Scaleway, in Paris, France.</li>
-      <li>The relay reaches your server through an XMPP server of ours. That server may log the domain names of the servers that connect to it, never accounts or messages.</li>
+      <li>The relay reaches your server through an XMPP server of ours. Its log names no account, no server and no IP address.</li>
       <li>Apple receives the push token and the empty alert, under Apple&rsquo;s own privacy policy.</li>
     </ul>
 
@@ -131,11 +131,12 @@
     </ul>
 
     <h2>Why we use this data, and the legal basis</h2>
-    <p>Under the GDPR, we handle the little data we get (push token and account address) because it is needed to give you the notifications you ask for. That is the performance of a contract with you (Article 6(1)(b)). Keeping the relay safe and working is our legitimate interest (Article 6(1)(f)). For features that need a permission or an outside service, such as location, camera, GIFs or link previews, you start the feature yourself, and that is your consent (Article 6(1)(a)).</p>
+    <p>Under the GDPR, we handle the little data we get (push token and account address) because it is needed to give you the notifications you ask for. That is the performance of a contract with you (Article 6(1)(b)). Keeping the relay safe and working, and answering you when you write to us, is our legitimate interest (Article 6(1)(f)). For features that need a permission or an outside service, such as location, camera, GIFs or link previews, you start the feature yourself, and that is your consent (Article 6(1)(a)).</p>
 
     <h2>How long we keep it</h2>
     <ul>
-      <li>The relay stores no records, and its logs name no one. Its logs stay on its server until they are rotated out by size, a few tens of megabytes at most. Its usage counts, which hold nothing about any account, are kept for 31 days.</li>
+      <li>The relay stores no records, and its logs name no one. Its logs are overwritten as they fill. Its usage counts, which hold nothing about any account, are kept for 31 days.</li>
+      <li>If you write to <a href="mailto:support@yapnest.fr">support@yapnest.fr</a>, we keep the conversation for 12 months after it ends, then delete it.</li>
       <li>Data on your device stays until you sign out or delete the app.</li>
       <li>It is also in the device&rsquo;s backups (iCloud Backup, Finder, Time Machine), unless &ldquo;Include Messages in Backups&rdquo; is off. A backup made before keeps its copy.</li>
       <li>If you delete the app without signing out, your password and this device&rsquo;s encryption key stay in the Keychain on this device until you sign in and sign out.</li>
