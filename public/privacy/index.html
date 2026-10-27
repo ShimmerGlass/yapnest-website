@@ -94,7 +94,7 @@
       <li>When your server has a new message for you, it tells the relay. The relay asks Apple to wake the app. The server&rsquo;s push names your account, so the relay sees that your account got a push, and when. Some servers add the sender and the text. The relay throws them away and never sends them to Apple. The alert has no content: not the sender, not the text. The app then fetches and decrypts the message itself and shows the notification.</li>
       <li>The relay stores nothing on disk. The code carries the token and your address, sealed with a key that only the relay has. The relay remembers a device for ten seconds, to avoid sending a push twice.</li>
       <li>The relay&rsquo;s log records only that a device registered or a push was sent, and errors. It never records your account address or your device.</li>
-      <li>The relay runs in France.</li>
+      <li>The relay runs at Scaleway, in Paris, France.</li>
       <li>The relay reaches your server through an XMPP server of ours. That server may log the domain names of the servers that connect to it, never accounts or messages.</li>
       <li>Apple receives the push token and the empty alert, under Apple&rsquo;s own privacy policy.</li>
     </ul>
